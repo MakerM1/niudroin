@@ -45,7 +45,7 @@ async function main() {
     });
   
     app.get('/', (req, res) => {
-      res.sendFile(join(__dirname, '../index.html'));
+      res.sendFile(join(__dirname, 'index.html'));
     });
   
     io.on('connection', async (socket) => {
