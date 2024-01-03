@@ -1,0 +1,76 @@
+body {
+    background-color: rgb(57, 57, 57);
+}
+
+#form {
+    background-color: transparent;
+    bottom: 30px;
+    padding: 0 90px 0 50px;
+
+    button {
+        position: absolute;
+        right: 20px;
+        bottom: -18px;
+        padding: 20px;
+        border-radius: 50%;
+        transition: all 0.2s;
+        border: 2px solid transparent;
+        cursor: pointer;
+
+        i {
+            transition: all 0.2s;
+        }
+
+        &:hover {
+            border: 2px solid #1DA1F2;
+
+            i {
+                color: #1DA1F2;
+            }
+        }
+
+        &:active {
+            background-color: #212121;
+        }
+    }
+}
+
+#input {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    background-color: rgb(42, 42, 42);
+    color: white;
+    border: 2px solid transparent;
+    transition: all 0.2s;
+    padding: 30px;
+
+    &:focus {
+        border: 2px solid #1DA1F2;
+    }
+}
+
+#messages {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+
+    li {
+        max-width: 500px;
+        width: fit-content;
+        padding: 10px 20px;
+        border-radius: 10px 10px 10px 0;
+        background-color: #1DA1F2;
+        color: white;
+        line-height: 20px;
+
+        &:nth-child(odd) {
+            background-color: #2172a4;
+            align-self: flex-end;
+            border-radius: 10px 10px 0 10px;
+        }
+    }
+}

@@ -3,6 +3,10 @@
   <head>
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <title>Niudroin chat</title>
+    <script
+      src="https://kit.fontawesome.com/2d3e948390.js"
+      crossorigin="anonymous"
+    ></script>
     <style>
       body {
         margin: 0;
@@ -54,29 +58,165 @@
       #messages > li:nth-child(odd) {
         background: #efefef;
       }
+
+      /* HTML5 display-role reset for older browsers */
+      article,
+      aside,
+      details,
+      figcaption,
+      figure,
+      footer,
+      header,
+      hgroup,
+      menu,
+      nav,
+      section {
+        display: block;
+      }
+
+      body {
+        line-height: 1;
+      }
+
+      ol,
+      ul {
+        list-style: none;
+      }
+
+      blockquote,
+      q {
+        quotes: none;
+      }
+
+      blockquote:before,
+      blockquote:after,
+      q:before,
+      q:after {
+        content: "";
+        content: none;
+      }
+
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+      }
+
+      body {
+        background-color: rgb(57, 57, 57);
+      }
+
+      #form {
+        background-color: transparent;
+        bottom: 30px;
+        padding: 0 90px 0 50px;
+      }
+
+      #form button {
+        position: absolute;
+        right: 20px;
+        bottom: -18px;
+        padding: 20px;
+        border-radius: 50%;
+        -webkit-transition: all 0.2s;
+        transition: all 0.2s;
+        border: 2px solid transparent;
+        cursor: pointer;
+      }
+
+      #form button i {
+        -webkit-transition: all 0.2s;
+        transition: all 0.2s;
+      }
+
+      #form button:hover {
+        border: 2px solid #1da1f2;
+      }
+
+      #form button:hover i {
+        color: #1da1f2;
+      }
+
+      #form button:active {
+        background-color: #212121;
+      }
+
+      #input {
+        max-width: 1000px;
+        width: 100%;
+        margin: 0 auto;
+        background-color: rgb(42, 42, 42);
+        color: white;
+        border: 2px solid transparent;
+        -webkit-transition: all 0.2s;
+        transition: all 0.2s;
+        padding: 30px;
+      }
+
+      #input:focus {
+        border: 2px solid #1da1f2;
+      }
+
+      #messages {
+        max-width: 1000px;
+        width: 100%;
+        margin: 0 auto;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        padding: 20px;
+      }
+
+      #messages li {
+        max-width: 500px;
+        width: -webkit-fit-content;
+        width: -moz-fit-content;
+        width: fit-content;
+        padding: 10px 20px;
+        border-radius: 10px 10px 10px 0;
+        background-color: #1da1f2;
+        color: white;
+        line-height: 20px;
+      }
+
+      #messages li:nth-child(odd) {
+        background-color: #2172a4;
+        -ms-flex-item-align: end;
+        align-self: flex-end;
+        border-radius: 10px 10px 0 10px;
+      }
+
+      /*# sourceMappingURL=global.css.map */
     </style>
+    <link rel="stylesheet" href="css/global.css" />
   </head>
   <body>
     <ul id="messages"></ul>
     <form id="form" action="">
-      <input id="input" autocomplete="off" /><button>Send</button>
-      <button id="toggle-btn">Disconnect</button>
+      <input id="input" autocomplete="off" placeholder="Message..." /><button>
+        <i class="fa-solid fa-arrow-up"></i>
+      </button>
     </form>
     <script src="/socket.io/socket.io.js"></script>
     <script>
-      const toggleButton = document.getElementById("toggle-btn");
-
-      toggleButton.addEventListener("click", (e) => {
-        e.preventDefault();
-        if (socket.connected) {
-          toggleButton.innerText = "Connect";
-          socket.disconnect();
-        } else {
-          toggleButton.innerText = "Disconnect";
-          socket.connect();
-        }
-      });
-
       // ||
       let counter = 0;
 
